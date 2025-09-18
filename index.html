@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transportation Digital Sign Board</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 80%;
+      max-width: 1000px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .heading {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #0056b3;
+    }
+    .lanes {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .lane {
+      width: 30%;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.2em;
+      color: #fff;
+    }
+    .lane span {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .lane-1 {
+      background-color: #28a745;
+    }
+    .lane-2 {
+      background-color: #ffc107;
+    }
+    .lane-3 {
+      background-color: #007bff;
+    }
+    .lane.status-active {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .lane.status-inactive {
+      font-size: 1.2em;
+      font-weight: normal;
+      opacity: 0.6;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="heading">Transportation Digital Sign Board</div>
+
+  <!-- Lane information -->
+  <div class="lanes">
+    <div class="lane lane-1" id="lane-1">
+      <span>Lane 1</span><br>
+      Two-Wheelers
+    </div>
+    <div class="lane lane-2" id="lane-2">
+      <span>Lane 2</span><br>
+      Emergency Vehicles (Ambulance)
+    </div>
+    <div class="lane lane-3" id="lane-3">
+      <span>Lane 3</span><br>
+      Four-Wheelers
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Transportation System. All Rights Reserved.
+  </div>
+</div>
+
+<script>
+  // Simulate lane statuses (active or inactive)
+  let laneStatus = {
+    lane1: "active", // Two-Wheelers
+    lane2: "inactive", // Emergency Vehicles
+    lane3: "active" // Four-Wheelers
+  };
+
+  // Function to update the status of lanes dynamically
+  function updateLaneStatus() {
+    // Update Lane 1 (Two-Wheelers)
+    const lane1 = document.getElementById('lane-1');
+    if (laneStatus.lane1 === "active") {
+      lane1.classList.add('status-active');
+      lane1.classList.remove('status-inactive');
+    } else {
+      lane1.classList.add('status-inactive');
+      lane1.classList.remove('status-active');
+    }
+
+    // Update Lane 2 (Emergency Vehicles)
+    const lane2 = document.getElementById('lane-2');
+    if (laneStatus.lane2 === "active") {
+      lane2.classList.add('status-active');
+      lane2.classList.remove('status-inactive');
+    } else {
+      lane2.classList.add('status-inactive');
+      lane2.classList.remove('status-active');
+    }
+
+    // Update Lane 3 (Four-Wheelers)
+    const lane3 = document.getElementById('lane-3');
+    if (laneStatus.lane3 === "active") {
+      lane3.classList.add('status-active');
+      lane3.classList.remove('status-inactive');
+    } else {
+      lane3.classList.add('status-inactive');
+      lane3.classList.remove('status-active');
+    }
+  }
+
+  // Initial update
+  updateLaneStatus();
+
+  // Simulate lane status changes every 5 seconds
+  setInterval(() => {
+    // Randomly toggle status of lanes for demonstration
+    laneStatus.lane1 = Math.random() > 0.5 ? "active" : "inactive";
+    laneStatus.lane2 = Math.random() > 0.5 ? "active" : "inactive";
+    laneStatus.lane3 = Math.random() > 0.5 ? "active" : "inactive";
+    updateLaneStatus();
+  }, 5000); // Change every 5 seconds
+</script>
+
+</body>
+</html>
